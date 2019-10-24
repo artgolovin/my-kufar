@@ -1,0 +1,23 @@
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Max: 100
+  
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/*.rb'
+    - 'config/**/*'
+    - 'spec/**/*'
+    - 'lib/tasks/cucumber.rake'
+    - 'features/support/env.rb'

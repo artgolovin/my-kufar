@@ -1,0 +1,13 @@
+/.bundle
+
+/log/
+/tmp/
+
+/storage/
+
+/node_modules
+/yarn-error.log
+
+/public/assets
+
+/config/master.key

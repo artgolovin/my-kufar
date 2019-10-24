@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: my_kufar_development
+
+test:
+  <<: *default
+  database: my_kufar_test
+
+production:
+  <<: *default
+  database: my_kufar_production
+  username: my_kufar
+  password: <%= ENV['MY_KUFAR_DATABASE_PASSWORD'] %>
