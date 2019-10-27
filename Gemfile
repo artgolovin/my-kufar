@@ -15,7 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
-  gem 'pry', '~> 0.12.2'
+  gem 'pry-rails', '~> 0.3.9'
   gem 'reek', '~> 5.4'
   gem 'rspec-rails', '~> 3.9'
   gem 'rubocop', '~> 0.75.1'
