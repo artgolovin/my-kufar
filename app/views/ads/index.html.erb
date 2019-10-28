@@ -1,0 +1,12 @@
+<% @ads.each do |adver| %>
+  <div class="card text-center" style="">
+    <h5 class="card-header"> Advertisement </h5>
+      <div class="card-body">
+        <h6 class="card-title"> <%= adver.title %> </h6>
+        <p> <%= adver.description %></p>
+        <p> <%= adver.image %></p>
+        <p> <%= adver.type_of_adver %></p>
+        <a href="#" class="btn btn-primary">About</a>
+      </div>
+  </div>
+<% end %>
