@@ -1,4 +1,4 @@
-STATUSES = [ :draft, :new, :rejected, :approved, :archived ].freeze
+STATUSES = %i[draft rejected new archived approved].freeze
 
 FactoryBot.define do
   factory :advertisement do
