@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
   def index
-    @ads = PublishedAdsQuery.find
+    @ads = paginate PublishedAdsQuery.find
   end
 end
