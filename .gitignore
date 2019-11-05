@@ -11,3 +11,4 @@
 /public/assets
 
 /config/master.key
+/config/credentials.yml.enc

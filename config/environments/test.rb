@@ -1,5 +1,9 @@
 Rails.application.configure do
-
+  config.after_initialize do
+      Bullet.enable        = true
+      Bullet.bullet_logger = true
+      Bullet.raise         = true # raise an error if n+1 query occurs
+    end
   config.cache_classes = true
 
   config.eager_load = false
@@ -16,7 +20,7 @@ Rails.application.configure do
 
   config.action_controller.allow_forgery_protection = false
 
-  config.active_storage.service = :test
+  # config.active_storage.service = :test
 
   config.active_support.deprecation = :stderr
 

@@ -1,6 +1,9 @@
 default: &default
   adapter: postgresql
+  host: localhost
   encoding: unicode
+  username: <%= ENV.fetch('RAILS_DB_USER', 'rails') %>
+  password: <%= ENV.fetch('RAILS_DB_PASSWORD', 'rails') %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
@@ -14,5 +17,3 @@ test:
 production:
   <<: *default
   database: my_kufar_production
-  username: my_kufar
-  password: <%= ENV['MY_KUFAR_DATABASE_PASSWORD'] %>
