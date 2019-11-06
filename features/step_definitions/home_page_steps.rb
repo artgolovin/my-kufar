@@ -1,12 +1,16 @@
-Given('I am an any user') do
+Given('I am a guest user') do
+end
+
+Before do
+  @ads_amount = ENV.fetch('PAGINATES_PER', 10).to_i / 2
 end
 
 Given('There are published advertisements') do
-  @published_ads = FactoryBot.create_list(:advertisement, 10)
+  @published_ads = FactoryBot.create_list(:advertisement, @ads_amount)
 end
 
 Given('There are hidden advertisements') do
-  @hidden_ads = FactoryBot.create_list(:hidden_advertisement, 10)
+  @hidden_ads = FactoryBot.create_list(:hidden_advertisement, @ads_amount)
 end
 
 When('I visit home page') do
@@ -32,4 +36,16 @@ Then('Fresh advertisements showed first by default') do
     raise("Fresh advertisements don't appear first") \
          if page.body.index(prev_ad.image) < page.body.index(next_ad.image)
   end
+end
+
+When('I click on advertisement') do
+  first('.advertisement_link').click
+end
+
+Then("It must open advertisement's page") do
+  expect(page).to have_current_path %r{ads\/[[:digit:]]}
+end
+
+Then("It should contain advertisement's description") do
+  expect(page).to have_content @published_ads.last.description
 end
