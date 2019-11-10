@@ -35,6 +35,7 @@ group :test do
   gem 'capybara', '~> 3.29'
   gem 'cucumber-rails', '~> 1.8', require: false
   gem 'database_cleaner', '~> 1.7'
+  gem 'simplecov', '~> 0.17.1', require: false
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
