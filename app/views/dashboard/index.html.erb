@@ -1,0 +1,11 @@
+<% if @current_user_role == 'user' %>
+  <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+    <%= link_to "My published ads", dashboard_published_ads_url, class: 'btn btn-primary' %>
+    <%= link_to "My hidden ads", dashboard_hidden_ads_url, class: 'btn btn-primary' %>
+  </div>  
+<% elsif @current_user_role == 'administrator' %>
+  <div class="btn-toolbar justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+    <%= link_to "Manage users", "#", class: 'btn btn-primary' %>
+    <%= link_to "Review advertisements", "#", class: 'btn btn-primary' %>
+  </div>
+<% end %>

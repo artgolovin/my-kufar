@@ -6,10 +6,9 @@
           <h6 class="card-title"> <%= adver.title %> </h6>
           <p> <%= adver.description if params[:action] == 'show' %> </p>
           <p> <%= adver.image %> </p>
-          <p> <%= adver.type_of_adver %> </p>
           <% if params[:action] != 'show' %>
             <a href='<%= advertisement_path(adver)%>' class='btn btn-primary advertisement_link'>About</a>
-          <% end %>  
+          <% end %> 
         </div>
     </div>
   </div>

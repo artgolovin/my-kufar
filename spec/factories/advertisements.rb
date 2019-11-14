@@ -1,15 +1,15 @@
-STATUSES = %i[draft rejected new archived approved].freeze
+HIDDEN_STATUSES = %i[draft rejected new archived approved].freeze
 
 FactoryBot.define do
   factory :advertisement do
     title { 'Opel Omega' }
     description { 'ads_descr' }
     sequence(:image) { |n| "Image #{n}" }
-    type_of_adver { 'first_type' }
-    status { 'published' }
+    status { :published }
+    user_id { FactoryBot.create(:user).id }
 
       factory :hidden_advertisement do
-        sequence(:status) { STATUSES.sample }
+        sequence(:status) { HIDDEN_STATUSES.sample }
       end
   end
 end
