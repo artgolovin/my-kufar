@@ -15,5 +15,6 @@ module MyKufar
   class Application < Rails::Application    
     config.load_defaults 5.2
     config.generators.system_tests = nil
+    config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
   end
 end
