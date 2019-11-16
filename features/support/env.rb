@@ -13,3 +13,7 @@ end
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
 World(FactoryBot::Syntax::Methods)
+
+World(Warden::Test::Helpers)
+
+Warden.test_mode!
