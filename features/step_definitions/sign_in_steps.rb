@@ -7,7 +7,7 @@ Given('There is an administrator') do
 end
 
 When('I sign as an administrator with correct credentials') do
-  SignInForm.fill_in_with(
+  Forms::SignIn.fill_in_with(
     email: @admin.email,
     password: @admin.password
   ).submit
@@ -27,7 +27,7 @@ Given('There is a user') do
 end
 
 When('I am sign as an user with correct credentials') do
-  SignInForm.fill_in_with(
+  Forms::SignIn.fill_in_with(
     email: @user.email,
     password: @user.password
   ).submit
@@ -43,7 +43,7 @@ Given('There is no person with this credentials') do
 end
 
 When('I try to sign in with this credentials') do
-  SignInForm.fill_in_with(
+  Forms::SignIn.fill_in_with(
     email: @anonym[:email],
     password: @anonym[:password]
   ).submit
