@@ -23,6 +23,10 @@
             <% if policy(adver).edit? %>
               <%= link_to "Edit", edit_advertisement_path(adver), role: 'button', class: 'btn btn-secondary mr-2' %>
             <% end %>
+
+            <% transitions(adver, current_user).each do |trans| %>
+              <%= link_to trans.capitalize, advertisement_change_status_path(adver, status_action: trans), method: :post, role: 'button', class: 'btn btn-primary mr-2' %>
+            <% end %>
           <% end %>
         </div>
     </div>

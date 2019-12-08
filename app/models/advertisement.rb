@@ -33,7 +33,7 @@ class Advertisement < ActiveRecord::Base
     end
 
     event :draft_again do
-      transitions from: [:rejected, :archived], to: :draft, guard: :owner?
+      transitions from: %i[rejected archived], to: :draft, guard: :owner?
     end
   end
 

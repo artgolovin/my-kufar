@@ -14,6 +14,11 @@ class DashboardController < ApplicationController
     @adver_types = paginate AdverType.all.includes(:advertisements)
   end
 
+  def review_ads
+    authorize :dashboard, :administrator?
+    @ads = paginate Advertisement.where(status: :new)
+  end
+
   private
 
   def set_adver_status

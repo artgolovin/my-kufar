@@ -31,5 +31,5 @@ STATUSES.each do |status|
 end
 
 Advertisement.all.each do |adver|
-  adver.image.attach(io: File.open(Rails.root.join("spec", "fixtures", "capybara.jpg")), filename: 'capybara.jpg', content_type: "image/jpg")
+  adver.image.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'capybara.jpg')), filename: 'capybara.jpg', content_type: 'image/jpg')
 end

@@ -1,6 +1,6 @@
 class AdsController < ApplicationController
   before_action :set_advertisement, only: %i[show edit update destroy]
-  before_action :authenticate_user!, only: %i[new create]
+  before_action :authenticate_user!, only: %i[new create edit update destroy change_status]
 
   def index
     @ads = paginate PublishedAdsQuery.find
@@ -42,7 +42,18 @@ class AdsController < ApplicationController
     authorize @adver
 
     @adver.destroy
-    redirect_to dashboard_ads_url(adver_status: :draft), notice: 'Successfully Destroyed'
+    redirect_back fallback_location: dashboard_ads_url(adver_status: :draft), notice: 'Successfully Destroyed'
+  end
+
+  # Auth for this action is done inside Advertisement's state machine
+  def change_status
+    @adver = Advertisement.find params[:advertisement_id]
+
+    if @adver.send params[:status_action], current_user
+      redirect_to :dashboard, notice: "Successfully #{params[:status_action]}"
+    else
+      redirect_to :dashboard, alert: 'Something Wrong'
+    end
   end
 
   private
@@ -52,7 +63,7 @@ class AdsController < ApplicationController
   end
 
   def updated_adver_params
-    h1 = { :adver_type_id => params.require(:advertisement)[:adver_type_id].to_i }
+    h1 = { adver_type_id: params.require(:advertisement)[:adver_type_id].to_i }
     params.merge h1
   end
 
