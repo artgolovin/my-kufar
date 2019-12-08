@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+gem 'aasm', '~> 5.0', '>= 5.0.6'
 gem 'bootstrap', '~> 4.3.1'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'jbuilder', '~> 2.5'
