@@ -1,6 +1,6 @@
 require 'simplecov'
-
 require 'cucumber/rails'
+require_relative './forms/form'
 
 ActionController::Base.allow_rescue = false
 
@@ -14,6 +14,10 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 
 World(FactoryBot::Syntax::Methods)
 
-World(Warden::Test::Helpers)
+include Warden::Test::Helpers
 
 Warden.test_mode!
+
+After do
+  Warden.test_reset!
+end

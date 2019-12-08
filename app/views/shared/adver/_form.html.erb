@@ -1,0 +1,7 @@
+<%= simple_form_for @adver do |form| %>
+  <%= form.input :title %>
+  <%= form.input :description %>
+  <%= form.input :adver_type_id, as: :radio_buttons, collection: AdverType.all %>
+  <%= form.input :image, as: :file %> 
+  <%= form.button :submit, 'Submit' %>
+<% end %>

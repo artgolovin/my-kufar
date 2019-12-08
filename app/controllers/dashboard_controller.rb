@@ -1,15 +1,22 @@
 class DashboardController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_adver_status, only: :ads
 
   def index; end
 
-  def published_ads
+  def ads
     authorize :dashboard, :user?
-    @ads = Users::PublishedAdsQuery.find current_user.id
+    @ads = paginate Users::AdsQuery.find(current_user.id, @adver_status)
   end
 
-  def hidden_ads
-    authorize :dashboard, :user?
-    @ads = Users::HiddenAdsQuery.find current_user.id
+  def adver_types
+    authorize :dashboard, :administrator?
+    @adver_types = paginate AdverType.all.includes(:advertisements)
+  end
+
+  private
+
+  def set_adver_status
+    @adver_status = params[:adver_status]
   end
 end

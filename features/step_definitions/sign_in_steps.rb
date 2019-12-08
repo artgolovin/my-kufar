@@ -14,7 +14,7 @@ When('I sign as an administrator with correct credentials') do
 end
 
 Then('It must show dashboard') do
-  expect(page).to have_current_path('/en/dashboard')
+  expect(page).to have_current_path('/dashboard')
 end
 
 Then('Page must contain welcome message for administrator') do

@@ -1,4 +1,3 @@
-
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 
@@ -6,10 +5,10 @@ require File.expand_path('../config/environment', __dir__)
 
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'pundit/rspec'
+require 'devise'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-
-require 'pundit/rspec'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -25,6 +24,7 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include AbstractController::Translation 
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.extend ControllerMacros, :type => :controller
 end
 
 Shoulda::Matchers.configure do |config|
@@ -33,3 +33,5 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+include Warden::Test::Helpers

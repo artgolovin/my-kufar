@@ -1,0 +1,12 @@
+<br/>
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <%= link_to "Create New Type of Advertisement", new_adver_type_path, class: "btn btn-info" %>
+  </li>
+</ul>
+
+<br/>
+
+<%= render partial: 'shared/adver_type/show', collection: @adver_types, as: :adver_type %>
+
+<%= paginate @adver_types %>

@@ -1,5 +1,5 @@
 <%= render 'shared/admins_message' %>
 
-<%= render partial: 'shared/adver', collection: @ads, as: :adver %>
+<%= render partial: 'shared/adver/show', collection: @ads, as: :adver %>
 
 <%= paginate @ads %>

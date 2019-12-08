@@ -1,0 +1,30 @@
+<div class="row justify-content-center">
+  <div class="card w-50">
+    <div class="card text-center">
+      <h5 class="card-header"> <%= adver.title %> </h5>
+        <div class="card-body">
+          
+          <% if adver.image.attached? %>
+            <%= image_tag(adver.image, class: "img-card-top", style: "width:35%") %>
+          <% end %>
+
+          <p> <%= adver.description if params[:action] == 'show' %> </p>
+          <p> Type: <strong> <%= adver.adver_type.name %> </strong> </p>
+
+          <% unless params[:action] == 'show' %>
+            <%= link_to "Show", advertisement_path(adver), role: 'button', class: 'btn btn-secondary mr-2' %>
+          <% end %>
+
+          <% unless params[:controller] == 'ads' %>
+            <% if policy(adver).destroy? %>
+              <%= link_to "Destroy", advertisement_path(adver), method: :delete, role: 'button', class: 'btn btn-secondary mr-2' %>
+            <% end %>
+
+            <% if policy(adver).edit? %>
+              <%= link_to "Edit", edit_advertisement_path(adver), role: 'button', class: 'btn btn-secondary mr-2' %>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>

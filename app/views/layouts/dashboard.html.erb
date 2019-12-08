@@ -1,0 +1,11 @@
+<% content_for :content do %>
+  <% if policy(:dashboard).user? %>
+    <%= render partial: 'shared/dashboard/users_nav' %>  
+  <% elsif policy(:dashboard).administrator? %>
+    <%= render partial: 'shared/dashboard/admins_nav' %>
+  <% end %>
+
+  <%= yield %>
+<% end %>
+
+<%= render template: "layouts/application" %>

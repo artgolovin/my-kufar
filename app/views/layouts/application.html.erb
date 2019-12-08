@@ -7,6 +7,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "jquery_ujs" %>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
 
@@ -18,7 +20,7 @@
         <%= render 'shared/device_warnings' %>
       </header>
 
-      <%= yield %>
+      <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
     </div>  
     
   </body>
