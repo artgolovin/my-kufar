@@ -3,7 +3,7 @@ User.create(
   nickname: 'apivchenko',
   first_name: 'Aleksey',
   last_name: 'Pivchenko',
-  password: '12345',
+  password: ENV['USER_PASSWORD'],
   role_id: Role.find_or_create_by(name: 'user').id
 )
 
@@ -12,14 +12,14 @@ User.create(
   nickname: 'ahalavin',
   first_name: 'Artsiom',
   last_name: 'Halavin',
-  password: '1234455',
+  password: ENV['ADMIN_PASSWORD'],
   role_id: Role.find_or_create_by(name: 'administrator').id
 )
 
 @user = User.find_by(nickname: 'apivchenko')
 @adver_type = AdverType.create(name: 'animals')
 
-STATUSES = HIDDEN_STATUSES + [:published]
+STATUSES = %i[draft new rejected approved published archived].freeze
 STATUSES.each do |status|
   Advertisement.create!(
     title: "#{@user.first_name}'s #{status} advertisement",
